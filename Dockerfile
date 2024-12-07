@@ -45,6 +45,10 @@ RUN git clone https://github.com/qcc4cp/qcc.git
 # Update WORKSPACE
 WORKDIR /home/repro/sources/qcc
 RUN sed -i 's/python3.7/python3.9/g' WORKSPACE
+RUN sed -i '/path = "\/usr\/lib\/python3\/dist-packages\/numpy\/core\/",/d' WORKSPACE
+RUN sed -i 's/# path/path/' WORKSPACE
+RUN sed -i 's/core/_core/' WORKSPACE
+RUN sed -i 's/11/9/g' WORKSPACE
 
 # Build qcc
 WORKDIR /home/repro/sources/qcc/src/lib
